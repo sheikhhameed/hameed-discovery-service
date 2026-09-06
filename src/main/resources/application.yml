@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: hameed-discovery-service
+
+server:
+  port: 8761
+
+eureka:
+  instance:
+    hostname: localhost
+    client:
+      register-with-eureka: true
+      fetch-registry: false
+      serviceUrl:
+          defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+      server:
+        eviction-internal-timer-in-ms: 5000
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health , info
+  endpoint:
+    health:
+      show-details: always
